@@ -1,0 +1,29 @@
+@use "util" as u;
+
+.about {
+    min-height: 26.6rem;
+    background: u.$White;
+    display: grid;
+    grid-template-columns: 21fr 29fr 22fr;
+
+    @include u.bp(sm) {
+        min-height: 72rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto 1fr;
+    } 
+
+    .image-1 {
+        background: url(/images/image-about-dark.jpg) center center no-repeat;
+        background-size: cover;
+    }
+
+    .image-2 {
+        background: url(/images/image-about-light.jpg) center center no-repeat;
+        background-size: cover;
+    }
+
+    .info {
+        padding-top: 3rem;
+        margin: auto 4.8rem;
+    }
+}

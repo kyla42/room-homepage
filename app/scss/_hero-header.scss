@@ -1,0 +1,205 @@
+@use "util" as u;
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @include u.bp(sm) {
+        height: 72rem;
+    }
+
+    .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7.8rem;
+        @extend %fx-ai-e;
+        z-index: 1;
+
+        @include u.bp(sm) {
+            height: 4.8rem;
+            justify-content: center;
+        }
+
+        :not(:last-child) {
+            margin-right: 3rem;
+        }
+
+        .menu {
+            background: transparent;
+
+            &.hidden {
+                display: none;
+
+                @include u.bp(sm) {
+                    position: absolute;
+                    left: 3rem;
+                    display: block;
+                }
+            }           
+        }
+
+        .logo {
+            padding: 0 2.5rem 0 6.5rem;
+            @extend %fx-ai-e;
+        }
+
+        .link {
+            position: relative;
+            display: flex;
+
+            @include u.bp(sm) {
+                display: none;
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                right: 50%;
+                left: 50%;
+                bottom: -1rem;
+                border-bottom: 0.2rem solid u.$White;
+                transition: all 0.25s ease-in-out;
+            }
+
+            &:hover {               
+                &::before {
+                    left: 20%;
+                }
+
+                &::after {
+                    right: 20%;
+                }
+            }
+        }
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: u.$White;
+        display: grid;
+        grid-template-columns: 7fr 5fr;
+
+        @include u.bp(sm) {
+            grid-template-columns: 1fr;
+        }
+
+        &__image {
+            position: relative;
+            max-width: 84rem;
+
+            @for $i from 1 through 3 {
+                :nth-child(#{$i}) {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    right: 100% * ($i - 1);
+                    background: url(../images/desktop-image-hero-#{$i}.jpg) center;
+                    background-size: cover;
+                    transition: transform .4s ease-in-out;
+
+                    @include u.bp(xs) {
+                        background: url(../images/mobile-image-hero-#{$i}.jpg) center;
+                        background-size: cover;
+                    }
+                }
+            }
+        }
+
+        &__desc {
+            position: relative;
+
+            @for $i from 1 through 3 {
+                .desc-#{$i} {
+                    position: absolute;
+                    top: 0;
+                    left: 100% * ($i - 1);
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 10rem;
+                    @extend %fxcol-jc-c;
+                    transition: transform .4s ease-in-out;
+
+                    @include u.bp(md) {
+                        padding: 1rem 5rem;
+                    }
+                }    
+            }
+            
+            .shop-now {
+                padding-bottom: 3rem;
+                display: flex;
+                column-gap: 2rem;
+                @extend %fx-ai-c;
+                transition: opacity .25s ease-in-out;
+                animation: arrow 1s ease-out 3;
+
+                @include u.bp(sm) {
+                    padding: 0;
+                }
+                
+                @keyframes arrow {
+                    0%, 100% {
+                        transform: translateX(0);
+                    }
+
+                    50% {
+                        transform: translateX(2rem);
+                    }
+                }
+
+                p {
+                    padding-bottom: 0;
+                    color: u.$Black;
+                    letter-spacing: 1.2rem;
+                }
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+
+    .slide-btns {
+        position: absolute;
+        bottom: 0;
+        left: calc(100% / 12 * 7);
+        display: flex;
+
+        @include u.bp(md) {
+            left: initial;
+            right: calc(100% / 12 * 5);
+        }
+
+        @include u.bp(sm) {
+            right: 0;
+            bottom: 50%;
+        }
+
+        .prev,
+        .next {
+            width: 8rem;
+            height: 8rem;
+            background: u.$Black;
+            transition: opacity .25s ease-in-out;
+
+            @include u.bp(sm) {
+                width: 6rem;
+                height: 6rem;
+            }
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+}

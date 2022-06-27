@@ -74,9 +74,9 @@ button {
 
 .container {
     max-width: 144rem;
-    max-height: 80rem;
-    // min-height: 100vh;
-    margin: 0 auto;
+    // max-height: 80rem;
+    min-height: 100vh;
+    margin: auto;
     display: grid;
     grid-template-rows: 267fr 133fr;
     overflow: hidden;

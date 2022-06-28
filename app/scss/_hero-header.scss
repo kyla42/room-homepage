@@ -93,7 +93,6 @@
 
         &__image {
             position: relative;
-            max-width: 84rem;
 
             @for $i from 1 through 3 {
                 :nth-child(#{$i}) {
@@ -136,7 +135,6 @@
             
             .shop-now {
                 padding-bottom: 3rem;
-                display: flex;
                 column-gap: 2rem;
                 @extend %fx-ai-c;
                 transition: opacity .25s ease-in-out;

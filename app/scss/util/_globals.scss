@@ -83,11 +83,11 @@ button {
 
     @include bp(md) {
         height: fit-content;
-        grid-template-rows: 1fr 1fr;
     }
 
     @include bp(sm) {
         margin: 0;
+        grid-template-rows: 1fr 1fr;
     }
 }
 
